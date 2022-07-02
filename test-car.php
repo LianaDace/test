@@ -80,7 +80,7 @@ class FuelGauge
             for($i = 0; $i <= $addFuel; $i++)
             {
                 if($addFuel <= $this->maxLevel) {
-                    return $this->currentLevel = $addFuel;
+                    return $this->currentLevel = $this->currentLevel + $addFuel;
                 }elseif($addFuel > $this->maxLevel){
                     $subtract = bcsub($addFuel, $this->maxLevel);
 
