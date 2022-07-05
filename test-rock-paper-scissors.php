@@ -85,6 +85,7 @@ class Game
     /** @var Player */
     private int $score;
     private array $winner = [];
+    private array $loser = [];
 
     public function __construct()
     {
@@ -103,18 +104,20 @@ class Game
         $paper->setWeaknesses([$scissors]);
         $scissors->setWeaknesses([$rock]);
     }
-    
+
+
     public function play()
     {
 
-            $player1 = new Player(readline("Set player1 name: "));
-            $player2 = new Player(readline("Set player2 name: "));
+           $player1 = new Player(readline("Set player1 name: "));
+           $player2 = new Player(readline("Set player2 name: "));
+
 
             $this->showElements();
-            $winner = [];
-            $loser = [];
+            $this->winner = [];
+            $this->loser = [];
 
-            while (empty($winner)) {
+            while (empty($this->winner)) {
 
 
                 $player1->setSelection($this->elements[(int)readline($player1->getName() . " Select element ")]);
@@ -131,17 +134,17 @@ class Game
                     echo $player1->getName() . " WIN! Score: " . $player1->getScore() . PHP_EOL;
                 }
                 if($player1->getScore() == 2){
-                    $winner[] = $player1->getName();
-                    $loser[] = $player2->getName();
+                    $this->winner[] = $player1->getName();
+                    $this->loser[] = $player2->getName();
                 }
                 if($player2->getScore() == 2){
-                    $winner[] = $player2->getName();
-                    $loser[] = $player1->getName();
+                    $this->winner[] = $player2->getName();
+                    $this->loser[] = $player1->getName();
                 }
             }
 
-            echo implode(" ", $winner) . " WIN!" . PHP_EOL;
-            echo implode(" ", $loser) . " LOSE" . PHP_EOL;
+            echo implode(" ", $this->winner) . " WIN!" . PHP_EOL;
+            echo implode(" ", $this->loser) . " LOSE" . PHP_EOL;
 
 
     }
@@ -153,46 +156,72 @@ class Game
             echo "[$key] : {$element->getName()}" . PHP_EOL;
         }
     }
+
+    public function getWinners()
+    {
+        foreach ($this->winner as $winner){
+            return $winner;
+        }
+    }
+
+    public function getLoser()
+    {
+        foreach ($this->loser as $loser){
+            return $loser;
+        }
+    }
+
+
 }
 
 class Tournament
 {
 
-    private Player $winner = [];
 
     public function __construct()
     {
-       
+
     }
 
-
-    public function printTable(Game $winner)
-    {
-        
-    }
-
-    public function start()
+    public function getPlayers()
     {
 
     }
 
+
+    public function getPlayerCount()
+    {
+
+    }
+
+
+    public function runGames()
+    {
+
+    }
 }
 
 
-
-$game = new Game();
-$game->play();
-
-
-
-
-
+ 
 /*
-$player1 = new Player("Anna");
-var_dump($player1->getScore());
-$player1->setScore();
-var_dump($player1->getScore());
-*/
+
+$winner = new Tournament();
+$winner->getPlayers();
+$winner->getPlayerCount();
+$winner->runGames();
+
+ */
+
+
+$game1 = new Game();
+$game1->play();
+//
+//$game2 = new Game();
+//$game2->play();
+//
+echo $game1->getWinners() . " win" . PHP_EOL;
+echo $game1->getLoser() . " lose" . PHP_EOL;
+//$game2->getWinners();
 
 
 
