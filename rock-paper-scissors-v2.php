@@ -112,9 +112,6 @@ class Game
     public function play(Player $player1, Player $player2)
     {
 
-      // $player1 = new Player(readline("Set player1 name: "));
-      // $player2 = new Player(readline("Set player2 name: "));
-
 
         $this->showElements();
 
@@ -155,14 +152,14 @@ class Game
 
 }
 
-$player1 = new Player("Anna");
-$player2 = new Player("Panna");
-$player3 = new Player("Ilze");
-$player4 = new Player("Valdis");
-$player5 = new Player("Juris");
-$player6 = new Player("Zigfrids");
-$player7 = new Player("Mirdza");
-$player8 = new Player("Olita");
+$player1 = new Player(readline("Enter your name "));
+$player2 = new Player("CPU1");
+$player3 = new Player("CPU2");
+$player4 = new Player("CPU3");
+$player5 = new Player("CPU4");
+$player6 = new Player("CPU5");
+$player7 = new Player("CPU6");
+$player8 = new Player("CPU7");
 
 
 //----------------------- First round ----------------------
@@ -192,5 +189,11 @@ $game6->play($game3->getWinner(), $game4->getWinner());
 $game7 = new Game();
 $game7->play($game5->getWinner(), $game6->getWinner());
 
-echo "Tournament finalist is: " . $game7->getWinner()->getName() . PHP_EOL;
+echo "Tournament WINNER is: " . $game7->getWinner()->getName() . PHP_EOL;
+
+
+
+
+
+
 
