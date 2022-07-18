@@ -5,12 +5,12 @@
 namespace app;
 
 require("Machine.php");
-require ("Player.php");
+//require ("Player.php");
 
 class Game extends Machine
 {
 
-    private Player $player;
+    //private Player $player;
 
     public function __construct()
     {
@@ -19,9 +19,18 @@ class Game extends Machine
         $this->rows = [];
     }
 
+  // public function prize()
+  // {
+  //     $this->prize = [
+  //         "A" => 1,
+  //         "B" => 2,
+  //
+  //     ];
+  // }
+
     public function play()
     {
-        $player = new Player();
+       // $player = new Player();
 
         $this->test = [];
         foreach($this->getLines() as $value)
@@ -36,21 +45,23 @@ class Game extends Machine
             var_dump($chars);
 
             for($i = 0; $i < count($this->getLines()); $i++)
-               if($firstChar != str_split($chars)[$i]){
-                   break;
-               }else {
-                   $count++;
-               }
-
-            }
+                if($firstChar != str_split($chars)[$i]){
+                    break;
+                }else {
+                    $count++;
+                }
+           // var_dump($count);
 
             if($count >= 3){
                 //  $prize = $prize + $perItem + ($credits[$getFirstChar] * $count) + $koef;
                 // $playerTotal = $playerTotal + $prize;
-                 echo  "Win: " . $count . $firstChar  . PHP_EOL;
+                echo  "Win: " . $count . $firstChar  . PHP_EOL;
             }
 
         }
+
+
+    }
 
 
 
@@ -67,8 +78,3 @@ while($i < 1) {
     $test->play();
     $i++;
 }
-
-
-
-
-
