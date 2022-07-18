@@ -11,22 +11,26 @@ class Game extends Machine
 {
 
     //private Player $player;
+    private array $prize;
 
     public function __construct()
     {
         parent::__construct();
         $this->test = [];
         $this->rows = [];
+        $this->prize = [];
     }
 
-  // public function prize()
-  // {
-  //     $this->prize = [
-  //         "A" => 1,
-  //         "B" => 2,
-  //
-  //     ];
-  // }
+   public function prize()
+   {
+        $this->prize = [
+           "A" => 1,
+           "B" => 2,
+           "C" => 3,
+
+       ];
+        return $this->prize;
+   }
 
     public function play()
     {
@@ -50,13 +54,17 @@ class Game extends Machine
                 }else {
                     $count++;
                 }
-           // var_dump($count);
 
             if($count >= 3){
+              
+                echo "You win: " . $this->prize()[$firstChar] * $count . " coins". PHP_EOL;
                 //  $prize = $prize + $perItem + ($credits[$getFirstChar] * $count) + $koef;
                 // $playerTotal = $playerTotal + $prize;
+               // echo $this->prize[$firstChar] * $count . PHP_EOL;
                 echo  "Win: " . $count . $firstChar  . PHP_EOL;
             }
+
+
 
         }
 
@@ -78,3 +86,4 @@ while($i < 1) {
     $test->play();
     $i++;
 }
+
